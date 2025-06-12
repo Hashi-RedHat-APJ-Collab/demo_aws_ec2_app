@@ -48,6 +48,21 @@ resource "aws_security_group_rule" "ssh_ingress" {
   }
 }
 
+resource "aws_security_group_rule" "ssh_ingress_aap" {
+  security_group_id = aws_security_group.this.id
+  type              = "ingress"
+
+  description = "SSH Access from AAP"
+  from_port   = 22
+  to_port     = 22
+  protocol    = "tcp"
+  cidr_blocks = ["3.106.46.143/32"]
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
 # Egress rules using the rules-only pattern - individual resources
 resource "aws_security_group_rule" "all_outbound_egress" {
   security_group_id = aws_security_group.this.id
