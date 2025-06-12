@@ -37,7 +37,7 @@ variable "subnet_id" {
 variable "vpc_id" {
   description = "VPC ID to create resources in (if not provided, the default VPC will be used)"
   type        = string
-  default     = null
+  default     = "vpc-03fc7fc11907eff98"
 }
 
 variable "key_name" {
