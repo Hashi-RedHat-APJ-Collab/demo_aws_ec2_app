@@ -4,7 +4,7 @@ variable "TFC_WORKSPACE_ID" {}
 variable "aws_region" {
   description = "AWS region to deploy resources"
   type        = string
-  default     = "ap-southeast-2" # Change this to your preferred region
+  default     = "us-east-2" # Change this to your preferred region
 }
 
 # Variables for the EC2 instances in default VPC
