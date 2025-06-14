@@ -41,22 +41,7 @@ resource "aws_security_group_rule" "ssh_ingress" {
   from_port   = 22
   to_port     = 22
   protocol    = "tcp"
-  cidr_blocks = ["192.168.0.0/24"]
-
-  lifecycle {
-    create_before_destroy = true
-  }
-}
-
-resource "aws_security_group_rule" "ssh_ingress_aap" {
-  security_group_id = aws_security_group.this.id
-  type              = "ingress"
-
-  description = "SSH Access from AAP"
-  from_port   = 22
-  to_port     = 22
-  protocol    = "tcp"
-  cidr_blocks = ["3.106.46.143/32"]
+  cidr_blocks = ["0.0.0.0/0"]
 
   lifecycle {
     create_before_destroy = true

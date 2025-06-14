@@ -35,12 +35,14 @@ resource "aap_job" "create_cr" {
   wait_for_completion_timeout_seconds = 180
 }
 
-# resource "aap_job" "close_cr" {
-#   job_template_id = 
-#   inventory_id    = aap_inventory.vm_inventory.id
-#   extra_vars = jsonencode({
-#     "TFC_WORKSPACE_ID" = var.TFC_WORKSPACE_ID
-#     "close_cr" = true
-#   })
-# }
+data "aap_workflow_job_template" "post_deploy" {
+  name = "AAP Post Deployment"
+  organization_name = "Default"
+}
 
+resource "aap_workflow_job" "post_deploy" {
+  depends_on = [ aws_instance.this ]
+  
+  workflow_job_template_id = data.aap_workflow_job_template.post_deploy.id
+  inventory_id             = aap_inventory.vm_inventory.id
+}
