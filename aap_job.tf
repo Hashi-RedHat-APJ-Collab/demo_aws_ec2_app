@@ -15,6 +15,11 @@ resource "aap_host" "sample_foo" {
   variables = jsonencode(
     {
       ansible_host : aws_instance.this.public_ip
+      environment: "development"
+      costcenter: "engineering"
+      owner: "devops-team"
+      purpose: "demo-application"
+      backup: "daily"
     }
   )
   groups = [aap_group.vm_groups.id]
