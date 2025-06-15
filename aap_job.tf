@@ -11,10 +11,10 @@ resource "aap_group" "vm_groups" {
 
 resource "aap_host" "sample_foo" {
   inventory_id = aap_inventory.vm_inventory.id
-  name         = "tf_host_foo"
+  name         = var.instance_name_prefix
   variables = jsonencode(
     {
-      "foo" : "bar"
+      ansible_host : aws_instance.this.public_ip
     }
   )
   groups = [aap_group.vm_groups.id]
