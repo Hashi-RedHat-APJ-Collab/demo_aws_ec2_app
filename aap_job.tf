@@ -32,7 +32,7 @@ data "aap_job_template" "create_cr" {
 
 resource "aap_job" "create_cr" {
   job_template_id = data.aap_job_template.create_cr.id
-  inventory_id    = aap_inventory.vm_inventory.id
+  # inventory_id    = aap_inventory.vm_inventory.id
   extra_vars = jsonencode({
     "TFC_WORKSPACE_ID" = var.TFC_WORKSPACE_ID
   })
