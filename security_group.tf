@@ -13,7 +13,7 @@
 # 5. Uses the newer AWS VPC security group rule resources for enhanced functionality
 
 resource "aws_security_group" "this" {
-  depends_on = [ aap_job.create_cr ]
+  depends_on             = [aap_job.create_cr]
   name                   = var.security_group_name
   description            = "Security group for EC2 instances"
   vpc_id                 = data.aws_vpc.default.id
@@ -92,11 +92,11 @@ resource "aws_vpc_security_group_ingress_rule" "ssh_ingress_aap_aws_range" {
 resource "aws_vpc_security_group_ingress_rule" "http_ingress" {
   depends_on        = [aap_job.create_cr]
   security_group_id = aws_security_group.this.id
-  description = "HTTP Access"
-  from_port = 80
-  to_port     = 80
-  ip_protocol = "tcp"
-  cidr_ipv4   = "0.0.0.0/0"
+  description       = "HTTP Access"
+  from_port         = 80
+  to_port           = 80
+  ip_protocol       = "tcp"
+  cidr_ipv4         = "0.0.0.0/0"
   tags = {
     Name = "HTTP Access - 0.0.0.0/0"
   }
