@@ -81,7 +81,7 @@ resource "aws_vpc_security_group_ingress_rule" "ssh_ingress_aap_aws_range" {
   from_port   = 22
   to_port     = 22
   ip_protocol = "tcp"
-  cidr_ipv4   = "52.95.36.0/22"
+  cidr_ipv4   = "3.105.58.0/22"
 
   tags = {
     Name = "SSH Access - AAP AWS Range"
